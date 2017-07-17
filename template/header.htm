@@ -1,0 +1,19 @@
+<div class="wrap">
+    <h2>博客搬家到wordpress</h2>
+    <h2 class="nav-tab-wrapper">
+        <a class="nav-tab<?php echo $map ? '' : ' nav-tab-active'; ?>" href="?import=cn_blog">导入博客数据</a>
+        <a class="nav-tab<?php echo !$map ? '' : ' nav-tab-active'; ?>" href="?import=cn_blog&amp;map=1">数据导入记录</a>
+    </h2>
+    <?php
+    $updates = get_plugin_updates();
+    $basename = plugin_basename(__FILE__);
+    if ( isset( $updates[$basename] ) ) 
+    {
+        $update = $updates[$basename];
+    ?>
+    <div class="error">
+        <p>
+            <strong><?php printf( __( 'A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files.', 'wordpress-importer' ), $update->update->new_version ); ?></strong>
+        </p>
+    </div>
+    <?php } ?>
